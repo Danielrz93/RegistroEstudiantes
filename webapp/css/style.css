@@ -1,0 +1,56 @@
+/* Enter your custom styles here */
+/* Diseño barra superior */
+.sapMIBar.sapMHeader-CTX {
+    background-color: #1d436d;
+}
+
+.ZSapMTitle {
+    background-color: #1d436d;
+    color: #ffffff;
+}
+
+.sapMITBFilter .sapMITBText {
+    color: #004379;
+}
+
+.sapMIBar-CTX .sapMTitle {
+    color: #fff;
+    text-shadow: 0 0 0 #ffffff;
+}
+
+.sapUiRootBackground,
+.sapMShellGlobalOuterBackground {
+    background-image: linear-gradient(to bottom, #002d51, #0d5894);
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+}
+
+/* Botones Icon Tab Bar */
+.sapMITBSelected .sapMITBFilterDefault {
+    background: #1d436d;
+    color: #fff;
+}
+
+.sapMITBFilterDefault {
+    border-color: #1d436d;
+    color: #1d436d;
+}
+
+
+.sapMITH .sapMITBSelected .sapMITBContentArrow::after {
+    /* indicador de seleccion tab _ seleccionadora */
+    background: #1d436d;
+}
+
+.sapMImg .sapMImgFocusable {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* .sapMLabel {
+    font-size: 1rem;
+} */
