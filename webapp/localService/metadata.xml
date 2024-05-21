@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZINSCRIPCIONEST_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Facultades" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Facultadid"/>
+                </Key>
+                <Property Name="Facultadid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserva" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombrefacultad" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Campo" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToTipoPrograma" Relationship="ZINSCRIPCIONEST_SRV.ToTipoPrograma" FromRole="FromRole_ToTipoPrograma" ToRole="ToRole_ToTipoPrograma"/>
+            </EntityType>
+            <EntityType Name="TipoPrograma" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tipoprogramaid"/>
+                    <PropertyRef Name="Facultadid"/>
+                </Key>
+                <Property Name="Tipoprogramaid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Facultadid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NombrePrograma" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Nombre de campo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToFacultades" Relationship="ZINSCRIPCIONEST_SRV.ToTipoPrograma" FromRole="ToRole_ToTipoPrograma" ToRole="FromRole_ToTipoPrograma"/>
+            </EntityType>
+            <EntityType Name="Estudiante" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cedula"/>
+                </Key>
+                <Property Name="Cedula" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Campo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Facultadid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tipocc" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tipoprogramaid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Reserva" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FNombre" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Comentario" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SNombre" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Comentario" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FApellido" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Comentario" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SApellido" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Comentario" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ToTipoPrograma" sap:content-version="1">
+                <End Type="ZINSCRIPCIONEST_SRV.Facultades" Multiplicity="1" Role="FromRole_ToTipoPrograma"/>
+                <End Type="ZINSCRIPCIONEST_SRV.TipoPrograma" Multiplicity="*" Role="ToRole_ToTipoPrograma"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ToTipoPrograma">
+                        <PropertyRef Name="Facultadid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ToTipoPrograma">
+                        <PropertyRef Name="Facultadid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZINSCRIPCIONEST_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="FacultadesSet" EntityType="ZINSCRIPCIONEST_SRV.Facultades" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="TipoPrgramaSet" EntityType="ZINSCRIPCIONEST_SRV.TipoPrograma" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Estudiante_Set" EntityType="ZINSCRIPCIONEST_SRV.Estudiante" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="ToTipoPrograma_AssocSet" Association="ZINSCRIPCIONEST_SRV.ToTipoPrograma" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FacultadesSet" Role="FromRole_ToTipoPrograma"/>
+                    <End EntitySet="TipoPrgramaSet" Role="ToRole_ToTipoPrograma"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://s4hana.sytes.net:9222/sap/opu/odata/sap/ZINSCRIPCIONEST_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://s4hana.sytes.net:9222/sap/opu/odata/sap/ZINSCRIPCIONEST_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
