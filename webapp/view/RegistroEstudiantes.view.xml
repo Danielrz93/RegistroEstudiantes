@@ -1,0 +1,139 @@
+<mvc:View xmlns:macros="sap.fe.macros"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:smartform="sap.ui.comp.smartform" controllerName="np.registroestudiantes.controller.RegistroEstudiantes"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" height="100%" width="100%">
+    <Page id="page">
+        <headerContent>
+            <!-- <Image id="_IDGenImage1" src="https://www.ces.edu.co/wp-content/uploads/2018/07/logo-ces.png" width="100px" decorative="false" press="handleImage3Press"/> -->
+            <Title id="_IDGenTitle1" text="{i18n>title}" titleStyle="H4" class="ZSapMTitle"/>
+        </headerContent>
+        <IconTabBar id="oITBMenu" class="sapUiResponsiveContentPadding" select="zgf_handleIconTabBarSelect" expanded="true" expand="true" expandable="false" stretchContentHeight="true">
+            <items >
+                <!-- Datos de Inscripción -->
+                <IconTabFilter id="oITFDatosInscripcion" icon="sap-icon://add-product" key="oITFDatosInscripcion" text="Datos de Inscripción" design="Horizontal">
+                    <Panel id="_IDGenPanel1" height="100%">
+                        <ScrollContainer id="_IDGenScrollContainer1">
+                            <form:SimpleForm id="oSFDatosInscripcion" labelSpanM="4" emptySpanL="4" emptySpanM="2" editable="true" title="Selección Programa">
+                                <Label id="oLFacultad" text="Facultad" labelFor="oSFacultadList" textAlign="Initial" width="100%" required="true"/>
+                                <Select id="oSFacultadList" required="true" enabled="true" change=".onSelectionFacultadChange" items="{
+                                    path: '/FacultadesSet'
+                                }">
+                                    <core:ListItem id="_IDGenListItem1" key="{Facultadid}" text="{Nombrefacultad}" />
+                                </Select>
+                                <Label id="oLTipoPrograma" text="Tipo de Programa" labelFor="oSTipoPrograma" textAlign="Initial" width="100%" required="false" />
+                                <Select id="oSTipoPrograma" required="true"/>
+                                <Label id="_IDGenLabel3" text="Tipo de Pregrado/Posgrado" labelFor="_IDGenSelect3" textAlign="Initial" width="100%" required="false"/>
+                                <Select id="_IDGenSelect3" required="false" />
+                                <Label id="_IDGenLabel4" text="Periodo Académico" labelFor="_IDGenSelect4" textAlign="Initial" width="100%" required="false"/>
+                                <Select id="_IDGenSelect4" required="false" />
+                                <Label id="_IDGenLabel5" text="Programa ( 1 Opción )" labelFor="_IDGenSelect5" textAlign="Initial" width="100%" required="false"/>
+                                <Select id="_IDGenSelect5" required="false" />
+                                <Label id="_IDGenLabel6" text="Programa ( 2 Opción )" labelFor="_IDGenSelect6" textAlign="Initial" width="100%" required="false"/>
+                                <Select id="_IDGenSelect6" required="false" />
+                                <Label id="_IDGenLabel7" text="Tipo aspirante" labelFor="_IDGenSelect7" textAlign="Initial" width="100%" required="false"/>
+                                <Select id="_IDGenSelect7" required="false" />
+                                <Label id="_IDGenLabel8" text="Medio por el cual se enteró del programa" labelFor="_IDGenSelect8" textAlign="Initial" width="100%" required="false"/>
+                                <Select id="_IDGenSelect8" required="false" />
+                                <Label id="oLTipoDOcumento" text="Tipo de Documento" labelFor="oSTipoDocumento" textAlign="Initial" width="100%" required="true"/>
+                                <Select id="oSTipoDocumento" required="true"
+                                    items = "{ 
+                                        path: 'tipodocModel>/TipoDocumento'
+                                     }" width="100%">
+                                    <core:ListItem id="_IDGenListItem2" key="{tipodocModel>key}" text="{tipodocModel>value}" />
+
+                                </Select>
+                                <Label id="oLNumeroDocumento" text="Número de Documento" labelFor="oINumeroDocumento" textAlign="Initial" width="100%" required="true"/>
+                                <Input id="oINumeroDocumento" width="60%" type="Number" maxLength="5" />
+                            </form:SimpleForm>
+                        </ScrollContainer>
+                    </Panel>
+                </IconTabFilter>
+                <IconTabSeparator id="_IDGenIconTabSeparator1" icon="sap-icon://open-command-field" />
+                <!-- Datos Personales -->
+                <IconTabFilter id="oITFDatosPersonales" icon="sap-icon://account" key="oITFDatosPersonales" text="Datos Personales" design="Horizontal">
+                    <Panel id="_IDGenPanel2">
+                        <ScrollContainer id="_IDGenScrollContainer2">
+                            <form:Form id="oSCedula" editable="false">
+                                <form:title >
+                                    <core:Title id="oTDatosPersonales" text="Datos Personales" />
+                                </form:title>
+                                <form:layout>
+                                    <form:ResponsiveGridLayout id="_IDGenResponsiveGridLayout1" columnsXL="2" columnsL="2" columnsM="1" emptySpanXL="0" emptySpanL="2" emptySpanM="2" adjustLabelSpan="false" singleContainerFullSize="false" />
+                                </form:layout>
+                                <form:formContainers>
+                                    <form:FormContainer id="_IDGenFormContainer3">
+                                        <form:formElements>
+                                            <form:FormElement id="_IDGenFormElement5">
+                                                <Label id="oLTipoDOcumento_d" text="Tipo de Documento" textAlign="Initial" width="100%"/>
+                                                <Input id="oITipoDOcumento" editable="false" valueState="Information"/>
+                                            </form:FormElement>
+                                            <form:FormElement id="_IDGenFormElement6">
+                                                <Label id="oLNumeroDocumento_d" text="Número de Documento" labelFor="oINumeroDocumento" textAlign="Initial" width="100%" />
+                                                <Input id="oINumeroDocumento_d" width="60%" type="Number" maxLength="5" editable="false" valueState="Information" />
+                                            </form:FormElement>
+                                        </form:formElements>
+                                    </form:FormContainer>
+                                </form:formContainers>
+                            </form:Form>
+                            <form:Form id="oFDatosPersonales" editable="true">
+                                <form:layout>
+                                    <form:ResponsiveGridLayout id="_IDGenResponsiveGridLayout2" columnsXL="2" columnsL="2" columnsM="2" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="false" />
+                                </form:layout>
+                                <form:formContainers>
+                                    <form:FormContainer id="_IDGenFormContainer1">
+                                        <form:formElements>
+                                            <form:FormElement id="_IDGenFormElement1">
+                                                <Label id="oLPrimerNombre" text="Primer Nombre / Segundo Nombre" textAlign="Initial" required="true" wrapping="true" labelFor="oIPrimerNombre"/>
+                                                <Input id="oIPrimerNombre" type="Text" />
+                                                <Input id="oISegundoNombre" type="Text" />
+                                            </form:FormElement>
+                                            <form:FormElement id="_IDGenFormElement2">
+                                                <Label id="oLPrimerApellido" text="Primero Apellido / Segundo Apellido" labelFor="oIPrimerApellido" textAlign="Begin" required="true" wrapping="true">
+                                                </Label>
+                                                <Input id="oIPrimerApellido" type="Text"/>
+                                                <Input id="oISegundoApellido" type="Text"/>
+                                            </form:FormElement>
+                                        </form:formElements>
+                                    </form:FormContainer>
+                                    <form:FormContainer id="_IDGenFormContainer2">
+                                        <form:formElements>
+                                            <form:FormElement id="_IDGenFormElement3">
+                                                <Label id="oLGenero" labelFor="oSGenero" text="Genero" required="true" wrapping="true" wrappingType="Hyphenated"/>
+                                                <Select id="oSGenero" width="40%">
+                                                    <layoutData>
+                                                        <layout:GridData id="_IDGenGridData1" spanL="10" />
+                                                    </layoutData>
+                                                </Select>
+                                            </form:FormElement>
+                                            <form:FormElement id="_IDGenFormElement4">
+                                                <Label id="oLEstadoCivil" labelFor="oSEstadoCivil" required="true" text="Estado Civil"/>
+                                                <Select id="oSEstadoCivil" width="60%">
+                                                    <layoutData>
+                                                        <layout:GridData id="_IDGenGridData2" spanL="10" />
+                                                    </layoutData>
+                                                </Select>
+                                            </form:FormElement>
+                                        </form:formElements>
+                                    </form:FormContainer>
+                                </form:formContainers>
+                            </form:Form>
+                            <Button id="_IDGenButton1" 
+                                icon="sap-icon://save"
+                                press="onSaveStudent"></Button>
+                        </ScrollContainer>
+                    </Panel>
+                </IconTabFilter>
+                <IconTabSeparator id="_IDGenIconTabSeparator2" icon="sap-icon://open-command-field" />
+                <!-- Datos Académicos -->
+                <IconTabFilter id="oITFDatosAcademicos" icon="sap-icon://study-leave" key="oITFDatosAcademicos" design="Horizontal" text="Datos Académicos">
+                </IconTabFilter>
+                <IconTabSeparator id="_IDGenIconTabSeparator3" icon="sap-icon://open-command-field" />
+            </items>
+        </IconTabBar>
+        <BusyDialog id="BusyDialog" />
+    </Page>
+</mvc:View>
