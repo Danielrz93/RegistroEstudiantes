@@ -7,10 +7,17 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m" height="100%" width="100%">
     <Page id="page">
-        <headerContent>
-            <!-- <Image id="_IDGenImage1" src="https://www.ces.edu.co/wp-content/uploads/2018/07/logo-ces.png" width="100px" decorative="false" press="handleImage3Press"/> -->
-            <Title id="_IDGenTitle1" text="{i18n>title}" titleStyle="H4" class="ZSapMTitle"/>
-        </headerContent>
+        <customHeader>
+            <Bar id="_IDGenBar1">
+                <contentLeft>
+                    <Image id="_IDGenImage1" src="https://www.ces.edu.co/wp-content/uploads/2018/07/logo-ces.png" width="150px" decorative="true" press="handleImage3Press"/>
+                    <!-- <Image id="_IDGenImage1" src="img/logoUces.png" width="150px" decorative="true" press="handleImage3Press"/> -->
+                </contentLeft>
+                <contentRight>
+                    <Title id="_IDGenTitle1" text="{i18n>title}" titleStyle="H5"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
         <IconTabBar id="oITBMenu" class="sapUiResponsiveContentPadding" select="zgf_handleIconTabBarSelect" expanded="true" expand="true" expandable="false" stretchContentHeight="true">
             <items >
                 <!-- Datos de Inscripción -->
@@ -88,14 +95,14 @@
                                         <form:formElements>
                                             <form:FormElement id="_IDGenFormElement1">
                                                 <Label id="oLPrimerNombre" text="Primer Nombre / Segundo Nombre" textAlign="Initial" required="true" wrapping="true" labelFor="oIPrimerNombre"/>
-                                                <Input id="oIPrimerNombre" type="Text" />
-                                                <Input id="oISegundoNombre" type="Text" />
+                                                <Input id="oIPrimerNombre" value="{FNombre}" />
+                                                <Input id="oISegundoNombre" type="Text" value="{SNombre}" />
                                             </form:FormElement>
                                             <form:FormElement id="_IDGenFormElement2">
                                                 <Label id="oLPrimerApellido" text="Primero Apellido / Segundo Apellido" labelFor="oIPrimerApellido" textAlign="Begin" required="true" wrapping="true">
                                                 </Label>
-                                                <Input id="oIPrimerApellido" type="Text"/>
-                                                <Input id="oISegundoApellido" type="Text"/>
+                                                <Input id="oIPrimerApellido" type="Text" value="{FApellido}"/>
+                                                <Input id="oISegundoApellido" type="Text" value="{SApellido}"/>
                                             </form:FormElement>
                                         </form:formElements>
                                     </form:FormContainer>
@@ -121,9 +128,7 @@
                                     </form:FormContainer>
                                 </form:formContainers>
                             </form:Form>
-                            <Button id="_IDGenButton1" 
-                                icon="sap-icon://save"
-                                press="onSaveStudent"></Button>
+                            <Button id="_IDGenButton1" icon="sap-icon://save" press="onSaveStudent"></Button>
                         </ScrollContainer>
                     </Panel>
                 </IconTabFilter>

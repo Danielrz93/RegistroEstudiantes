@@ -16,12 +16,11 @@ sap.ui.define([
                 this.aUpdateEstudiante = false;
             },
 
-            onSaveStudent: function (oEvent) {
+            onSaveStudent: function () {
                 var oView = this.getView();
                 var oEstudiante = {};
                 var oModel = oView.getModel();
                 var aSaveEstudiante = false;
-
 
                 oEstudiante.Cedula = oView.byId("oINumeroDocumento").getValue();
                 oEstudiante.Facultadid = oView.byId("oSFacultadList").getSelectedItem().mProperties.key;
@@ -233,8 +232,6 @@ sap.ui.define([
                                     } else if (oInput.getSelectedItem) {
                                         var oItem = sap.ui.getCore().getControl(oElement.__sLabeledControl).getSelectedItem();
                                         if (oItem !== null) {
-                                            // console.log(oItem.mProperties.key);
-                                            // console.log(oItem.mProperties.text);
                                             sValue = oItem.mProperties.text;
                                         }
                                     } else if (oInput.getMetadata().getName() === "sap.m.RadioButtonGroup") {
@@ -299,6 +296,8 @@ sap.ui.define([
             },
             zforganizarinfo: function (ztab) {
                 var oView = this.getView();
+                var BusyDialog = oView.byId("BusyDialog");
+                BusyDialog.open();
                 switch (ztab) {
                     case 1:
                         var vDocumento = oView.byId("oINumeroDocumento");
@@ -309,31 +308,25 @@ sap.ui.define([
                         vTpDoc_d.setValue(vTpDoc.mProperties.text);
 
                         // BUscar si el Estudiante existe
-                        var OModel = this.getView().getModel();
-                        OModel.read("/Estudiante_Set('" + vDocumento.getValue() + "')",
-                            {
-                                success: function (oData) {
-                                    var count = oData.results.length;
-
-                                    if (count == 0) {
-                                        that.getSplitContObj().toDetail(that.createId('notfound'));
-                                        return;
-                                    }
-
-                                    var jData = new JSONModel(oData.results);
-                                    that.getView().byId("_IDGenObjectPageLayout1").setModel(jData, "salesordermodel");
-                                    that.getSplitContObj().toDetail(that.createId('_IDGenObjectPageLayout1'));
-                                }, error: function (oError) {
-                                    console.log(oError);
-                                }
-                            });
-
+                        this.zfBuscarEstudiante();
+                        BusyDialog.close();
+                        break;
+                    case 2:
+                        this.onSaveStudent();
                         break;
 
                     default:
                         break;
                 }
                 return;
+            },
+            zfBuscarEstudiante: function () {
+                var oView = this.getView();
+                var vDocumento = oView.byId("oINumeroDocumento");
+                var vPath = "/Estudiante_Set('" + vDocumento.getValue() + "')";
+                var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
+                oITFDatosPersonales.unbindElement();
+                oITFDatosPersonales.bindElement(vPath);
             }
 
         });
