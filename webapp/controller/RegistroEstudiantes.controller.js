@@ -373,20 +373,21 @@ sap.ui.define([
                 var vDocumento = oView.byId("oINumeroDocumento");
                 var vPath = "/Estudiante_Set('" + vDocumento.getValue() + "')";
                 var oModel = oView.getModel();
-                // oModel.read(vPath, {
-                //     success: function (oData) {
-                //         var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
-                //         oITFDatosPersonales.unbindElement();
-                //         oITFDatosPersonales.bindElement(vPath);
-                //     }.bind(this),
-                //     error: function (oError) {
-                //         console.log(oError);
-                //     }
-                // });
+                var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
+                oITFDatosPersonales.unbindElement();
+                oModel.read(vPath, {
+                    method: "GET",
+                    success: function (oData) {
+                        oITFDatosPersonales.bindElement(vPath);
+                    }.bind(this),
+                    error: function (oError) {
+                        console.log(oError);
+                    }
+                });
 
-            //     var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
-            //     oITFDatosPersonales.unbindElement();
-            //     oITFDatosPersonales.bindElement(vPath);
+                //     var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
+                //     oITFDatosPersonales.unbindElement();
+                //     oITFDatosPersonales.bindElement(vPath);
             }
 
         });

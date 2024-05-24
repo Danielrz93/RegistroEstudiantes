@@ -90,7 +90,7 @@
                                 <form:layout>
                                     <form:ResponsiveGridLayout id="_IDGenResponsiveGridLayout2" columnsXL="2" columnsL="2" columnsM="1" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="false" />
                                 </form:layout>
-                                <form:formContainers>                                    
+                                <form:formContainers>
                                     <form:FormContainer id="_IDGenFormContainer1">
                                         <form:formElements>
                                             <form:FormElement id="_IDGenFormElement1">
@@ -106,7 +106,7 @@
                                             </form:FormElement>
                                         </form:formElements>
                                     </form:FormContainer>
-                                    <form:FormContainer id="_IDGenFormContainer2" >
+                                    <form:FormContainer id="_IDGenFormContainer2">
                                         <form:layoutData>
                                             <layout:GridData id="_IDGenGridData3" spanM="12" spanS="12" spanL="6" spanXL="6"/>
                                         </form:layoutData>
@@ -128,9 +128,7 @@
                                                     <layoutData>
                                                         <layout:GridData id="_IDGenGridData2" spanL="10" />
                                                     </layoutData>
-                                                    <core:ListItem id="oLIEstadoCivil" key="{estadocivilModel>key}" text="{estadocivilModel>value}">
-
-                                                    </core:ListItem>
+                                                    <core:ListItem id="oLIEstadoCivil" key="{estadocivilModel>key}" text="{estadocivilModel>value}"/>
                                                 </Select>
                                             </form:FormElement>
                                         </form:formElements>
