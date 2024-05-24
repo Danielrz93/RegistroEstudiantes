@@ -12,10 +12,16 @@ sap.ui.define([
         return Controller.extend("np.registroestudiantes.controller.RegistroEstudiantes", {
             onInit: function () {
                 this.zfsTipoDocModel();
+                this.zfsGenero();
+                this.zfEstadoCivil();
 
                 this.aUpdateEstudiante = false;
-            },
 
+                if (screen.width >= 500) {
+                    var _IDGenToolbar1 = this.getView().byId("_IDGenToolbar1");
+                    _IDGenToolbar1.mProperties.visible = false;
+                }
+            },
             onSaveStudent: function () {
                 var oView = this.getView();
                 var oEstudiante = {};
@@ -294,6 +300,48 @@ sap.ui.define([
                 var oModel = new JSONModel(aTipoDoc);
                 this.getView().setModel(oModel, "tipodocModel");
             },
+            zfsGenero: function () {
+                var oGenero = {
+                    "Genero": [
+                        {
+                            "key": "GE0000",
+                            "value": ""
+                        },
+                        {
+                            "key": "GE0001",
+                            "value": "Masculino"
+                        },
+                        {
+                            "key": "GE0002",
+                            "value": "Femenino"
+                        }
+                    ]
+                };
+
+                var oModel = new JSONModel(oGenero);
+                this.getView().setModel(oModel, "generoModel");
+            },
+            zfEstadoCivil : function(){
+                var oEstadoCivil = {
+                    "EstadoCivil": [
+                        {
+                            "key": "EC0000",
+                            "value": ""
+                        },
+                        {
+                            "key": "EC0001",
+                            "value": "Soltero"
+                        },
+                        {
+                            "key": "EC0002",
+                            "value": "Casado"
+                        },
+                    ]
+                };
+
+                var oModel = new JSONModel(oEstadoCivil);
+                this.getView().setModel(oModel, "estadocivilModel");
+            },
             zforganizarinfo: function (ztab) {
                 var oView = this.getView();
                 var BusyDialog = oView.byId("BusyDialog");
@@ -308,8 +356,7 @@ sap.ui.define([
                         vTpDoc_d.setValue(vTpDoc.mProperties.text);
 
                         // BUscar si el Estudiante existe
-                        this.zfBuscarEstudiante();
-                        BusyDialog.close();
+                        this.zfBuscarEstudiante();                        
                         break;
                     case 2:
                         this.onSaveStudent();
@@ -317,7 +364,8 @@ sap.ui.define([
 
                     default:
                         break;
-                }
+                };
+                BusyDialog.close();
                 return;
             },
             zfBuscarEstudiante: function () {

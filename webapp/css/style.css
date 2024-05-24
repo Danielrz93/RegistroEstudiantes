@@ -1,5 +1,6 @@
 /* Enter your custom styles here */
 /* Diseño barra superior */
+/* COlor Header bar */
 /* .sapMIBar.sapMHeader-CTX {
     background-color: #1d436d;
 } */
@@ -7,7 +8,7 @@
 .sapMITBFilter .sapMITBText {
     color: #004379;
     /* color: #fff; */
-} 
+}
 
 .sapMIBar-CTX .sapMTitle {
     color: black;
@@ -37,6 +38,7 @@
 .sapMITH .sapMITBSelected .sapMITBContentArrow::after {
     /* indicador de seleccion tab _ seleccionadora */
     background: #1d436d;
+    padding-bottom: 2px;
 }
 
 .sapMImg .sapMImgFocusable {
@@ -46,6 +48,17 @@
     width: 50%;
 }
 
-.sapMITH {
+/* .sapMITH {
     background-color: #ececec;
-} 
+} */
+
+.sapMITBContent {
+    background-color: #1d436d;
+    border-color: #fff  ;
+    /* border: 1px solid #fff; */
+}
+
+/* .sapUshellFlexColumn {
+    background-color: #1d436d;
+
+} */

@@ -10,11 +10,11 @@
         <customHeader>
             <Bar id="_IDGenBar1">
                 <contentLeft>
-                    <Image id="_IDGenImage1" src="https://www.ces.edu.co/wp-content/uploads/2018/07/logo-ces.png" width="150px" decorative="true" press="handleImage3Press"/>
-                    <!-- <Image id="_IDGenImage1" src="img/logoUces.png" width="150px" decorative="true" press="handleImage3Press"/> -->
+                    <!-- <Image id="_IDGenImage1" src="https://www.ces.edu.co/wp-content/uploads/2018/07/logo-ces.png" width="120px" decorative="true" press="handleImage3Press"/> -->
+                    <Image id="_IDGenImage1" src="/image/logoUces.png" width="120px" decorative="true"/>
                 </contentLeft>
                 <contentRight>
-                    <Title id="_IDGenTitle1" text="{i18n>title}" titleStyle="H5"/>
+                    <Title id="_IDGenTitle1" text="{i18n>title}" titleStyle="H5" />
                 </contentRight>
             </Bar>
         </customHeader>
@@ -62,7 +62,7 @@
                 <IconTabSeparator id="_IDGenIconTabSeparator1" icon="sap-icon://open-command-field" />
                 <!-- Datos Personales -->
                 <IconTabFilter id="oITFDatosPersonales" icon="sap-icon://account" key="oITFDatosPersonales" text="Datos Personales" design="Horizontal">
-                    <Panel id="_IDGenPanel2">
+                    <Panel id="_IDGenPanel2" height="100%">
                         <ScrollContainer id="_IDGenScrollContainer2">
                             <form:Form id="oSCedula" editable="false">
                                 <form:title >
@@ -90,7 +90,7 @@
                                 <form:layout>
                                     <form:ResponsiveGridLayout id="_IDGenResponsiveGridLayout2" columnsXL="2" columnsL="2" columnsM="2" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="false" />
                                 </form:layout>
-                                <form:formContainers>
+                                <form:formContainers>                                    
                                     <form:FormContainer id="_IDGenFormContainer1">
                                         <form:formElements>
                                             <form:FormElement id="_IDGenFormElement1">
@@ -106,11 +106,17 @@
                                             </form:FormElement>
                                         </form:formElements>
                                     </form:FormContainer>
-                                    <form:FormContainer id="_IDGenFormContainer2">
+                                    <form:FormContainer id="_IDGenFormContainer2" >
+                                        <form:layoutData>
+                                            <layout:GridData id="_IDGenGridData3" spanM="12" spanS="12" spanL="6" spanXL="6"/>
+                                        </form:layoutData>
                                         <form:formElements>
                                             <form:FormElement id="_IDGenFormElement3">
                                                 <Label id="oLGenero" labelFor="oSGenero" text="Genero" required="true" wrapping="true" wrappingType="Hyphenated"/>
-                                                <Select id="oSGenero" width="40%">
+                                                <Select id="oSGenero" items = "{ 
+                                                    path: 'generoModel>/Genero'
+                                                 }" width="40%">
+                                                    <core:ListItem id="oLIGenero" key="{generoModel>key}" text="{generoModel>value}" />
                                                     <layoutData>
                                                         <layout:GridData id="_IDGenGridData1" spanL="10" />
                                                     </layoutData>
@@ -118,10 +124,13 @@
                                             </form:FormElement>
                                             <form:FormElement id="_IDGenFormElement4">
                                                 <Label id="oLEstadoCivil" labelFor="oSEstadoCivil" required="true" text="Estado Civil"/>
-                                                <Select id="oSEstadoCivil" width="60%">
+                                                <Select id="oSEstadoCivil" width="60%" items= "{ path: 'estadocivilModel>/EstadoCivil' }">
                                                     <layoutData>
                                                         <layout:GridData id="_IDGenGridData2" spanL="10" />
                                                     </layoutData>
+                                                    <core:ListItem id="oLIEstadoCivil" key="{estadocivilModel>key}" text="{estadocivilModel>value}">
+
+                                                    </core:ListItem>
                                                 </Select>
                                             </form:FormElement>
                                         </form:formElements>
@@ -140,5 +149,11 @@
             </items>
         </IconTabBar>
         <BusyDialog id="BusyDialog" />
+        <footer>
+            <Toolbar id="_IDGenToolbar1" visible="true">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                <Button id="_IDGenButton2" icon="sap-icon://save" text="Siguiente"/>
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>
