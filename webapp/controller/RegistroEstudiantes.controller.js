@@ -321,7 +321,7 @@ sap.ui.define([
                 var oModel = new JSONModel(oGenero);
                 this.getView().setModel(oModel, "generoModel");
             },
-            zfEstadoCivil : function(){
+            zfEstadoCivil: function () {
                 var oEstadoCivil = {
                     "EstadoCivil": [
                         {
@@ -356,7 +356,7 @@ sap.ui.define([
                         vTpDoc_d.setValue(vTpDoc.mProperties.text);
 
                         // BUscar si el Estudiante existe
-                        this.zfBuscarEstudiante();                        
+                        this.zfBuscarEstudiante();
                         break;
                     case 2:
                         this.onSaveStudent();
@@ -372,9 +372,21 @@ sap.ui.define([
                 var oView = this.getView();
                 var vDocumento = oView.byId("oINumeroDocumento");
                 var vPath = "/Estudiante_Set('" + vDocumento.getValue() + "')";
-                var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
-                oITFDatosPersonales.unbindElement();
-                oITFDatosPersonales.bindElement(vPath);
+                var oModel = oView.getModel();
+                // oModel.read(vPath, {
+                //     success: function (oData) {
+                //         var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
+                //         oITFDatosPersonales.unbindElement();
+                //         oITFDatosPersonales.bindElement(vPath);
+                //     }.bind(this),
+                //     error: function (oError) {
+                //         console.log(oError);
+                //     }
+                // });
+
+            //     var oITFDatosPersonales = oView.byId('oITFDatosPersonales');
+            //     oITFDatosPersonales.unbindElement();
+            //     oITFDatosPersonales.bindElement(vPath);
             }
 
         });

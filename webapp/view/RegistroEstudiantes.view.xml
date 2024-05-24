@@ -88,7 +88,7 @@
                             </form:Form>
                             <form:Form id="oFDatosPersonales" editable="true">
                                 <form:layout>
-                                    <form:ResponsiveGridLayout id="_IDGenResponsiveGridLayout2" columnsXL="2" columnsL="2" columnsM="2" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="false" />
+                                    <form:ResponsiveGridLayout id="_IDGenResponsiveGridLayout2" columnsXL="2" columnsL="2" columnsM="1" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" adjustLabelSpan="false" singleContainerFullSize="false" />
                                 </form:layout>
                                 <form:formContainers>                                    
                                     <form:FormContainer id="_IDGenFormContainer1">
