@@ -142,6 +142,9 @@
                 <IconTabSeparator id="_IDGenIconTabSeparator2" icon="sap-icon://open-command-field" />
                 <!-- Datos Académicos -->
                 <IconTabFilter id="oITFDatosAcademicos" icon="sap-icon://study-leave" key="oITFDatosAcademicos" design="Horizontal" text="Datos Académicos">
+                    <smartform:SmartForm id="_IDGenSmartForm1" >
+
+                    </smartform:SmartForm>
                 </IconTabFilter>
                 <IconTabSeparator id="_IDGenIconTabSeparator3" icon="sap-icon://open-command-field" />
             </items>

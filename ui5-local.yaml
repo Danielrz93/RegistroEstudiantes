@@ -3,7 +3,7 @@ metadata:
   name: np.registroestudiantes
 type: application
 framework:
-  name: SAPUI5
+  name: OpenUI5
   version: 1.123.1
   libraries:
     - name: sap.m
