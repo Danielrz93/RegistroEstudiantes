@@ -28,7 +28,7 @@
                                 <Label id="oLFacultad" text="Facultad" labelFor="oSFacultadList" textAlign="Initial" width="100%" required="true"/>
                                 <Select id="oSFacultadList" required="true" enabled="true" change=".onSelectionFacultadChange" items="{
                                     path: '/FacultadesSet'
-                                }">
+                                }" width="50%">
                                     <core:ListItem id="_IDGenListItem1" key="{Facultadid}" text="{Nombrefacultad}" />
                                 </Select>
                                 <Label id="oLTipoPrograma" text="Tipo de Programa" labelFor="oSTipoPrograma" textAlign="Initial" width="100%" required="false" />
