@@ -3,9 +3,12 @@
     xmlns:f="sap.f"
     xmlns:layout="sap.ui.layout"
     xmlns:form="sap.ui.layout.form"
-    xmlns:smartform="sap.ui.comp.smartform" controllerName="np.registroestudiantes.controller.RegistroEstudiantes"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m" height="100%" width="100%">
+    xmlns:smartform="sap.ui.comp.smartform"     
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+    controllerName="np.registroestudiantes.controller.RegistroEstudiantes"
+    displayBlock="true"
+     height="100%" width="100%">
     <Page id="page">
         <customHeader>
             <Bar id="_IDGenBar1">
@@ -142,7 +145,7 @@
                 <IconTabSeparator id="_IDGenIconTabSeparator2" icon="sap-icon://open-command-field" />
                 <!-- Datos Académicos -->
                 <IconTabFilter id="oITFDatosAcademicos" icon="sap-icon://study-leave" key="oITFDatosAcademicos" design="Horizontal" text="Datos Académicos">
-                    <smartform:SmartForm id="_IDGenSmartForm1" >
+                    <smartform:SmartForm id="_IDGenSmartForm1">
 
                     </smartform:SmartForm>
                 </IconTabFilter>
