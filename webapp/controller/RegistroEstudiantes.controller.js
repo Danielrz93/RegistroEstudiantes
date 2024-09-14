@@ -97,7 +97,8 @@ sap.ui.define([
 
 
             },
-            zgf_handleIconTabBarSelect: function (oEvent) {
+            zgf_handleIconTabBarSelect: function (oEvent) {   
+                return;             
                 var oView = this.getView()
                 var Form = this.byId("oSFDatosInscripcion");
                 // Obtener Tab Key seleccionado
